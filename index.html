@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>马克笔记</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="note-sidebar" aria-label="笔记侧边栏">
+        <h1>马克笔记</h1>
+
+        <div class="note-tools">
+          <label class="search-box">
+            <span class="sr-only">搜索标题或内容</span>
+            <input id="searchInput" type="search" placeholder="搜索标题或内容" />
+          </label>
+          <button id="newNoteBtn" class="icon-button icon-button--add" type="button" title="新建笔记" aria-label="新建笔记">
+            +
+          </button>
+        </div>
+
+        <nav id="noteList" class="note-list" aria-label="笔记列表"></nav>
+      </aside>
+
+      <main class="note-workspace">
+        <header class="workspace-topbar">
+          <span id="saveState" class="save-state">已准备</span>
+          <button id="deleteNoteBtn" class="icon-button icon-button--danger" type="button" title="删除笔记" aria-label="删除笔记">
+            🗑
+          </button>
+        </header>
+
+        <article class="note-paper" aria-label="笔记内容">
+          <label class="title-field">
+            <span class="sr-only">笔记标题</span>
+            <input id="titleInput" type="text" placeholder="未命名笔记" />
+          </label>
+
+          <label class="content-field">
+            <span class="sr-only">笔记内容</span>
+            <textarea id="contentInput" placeholder="开始记录..."></textarea>
+          </label>
+        </article>
+
+        <p id="noteMeta" class="note-meta">暂无内容</p>
+      </main>
+    </div>
+
+    <template id="noteItemTemplate">
+      <button class="note-card" type="button">
+        <strong class="note-card__title"></strong>
+        <span class="note-card__preview"></span>
+      </button>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
