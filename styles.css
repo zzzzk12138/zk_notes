@@ -1,16 +1,16 @@
 :root {
   color-scheme: light;
-  --page: #f8f7f2;
-  --sidebar: #fbfaf5;
+  --page: #f5f8fa;
+  --sidebar: #f7fafc;
   --paper: #ffffff;
-  --text: #282520;
-  --muted: #777169;
-  --line: #e4e0d7;
-  --green: #2f7d68;
-  --green-soft: #edf7f2;
+  --text: #1f2a38;
+  --muted: #5f6d7a;
+  --line: #d5dee6;
+  --blue: #2d7a9a;
+  --blue-soft: #e6f0f7;
   --danger: #b34848;
   --danger-soft: #f8eeee;
-  --shadow: 0 16px 44px rgba(64, 52, 39, 0.12);
+  --shadow: 0 16px 44px rgba(25, 50, 70, 0.12);
   font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif;
 }
 
@@ -62,17 +62,17 @@ textarea {
   width: 100%;
   height: 50px;
   padding: 0 14px;
-  border: 2px solid rgba(47, 125, 104, 0.62);
+  border: 2px solid rgba(45, 122, 154, 0.62);
   border-radius: 8px;
-  background: #fffef9;
+  background: #fafcfe;
   color: var(--text);
   font-size: 18px;
   outline: none;
 }
 
 .search-box input:focus {
-  border-color: var(--green);
-  box-shadow: 0 0 0 3px rgba(47, 125, 104, 0.16);
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(45, 122, 154, 0.16);
 }
 
 .icon-button {
@@ -88,7 +88,7 @@ textarea {
 }
 
 .icon-button--add {
-  background: var(--green);
+  background: var(--blue);
   color: #ffffff;
 }
 
@@ -118,8 +118,8 @@ textarea {
 }
 
 .note-card.is-active {
-  border-color: #cde5d9;
-  background: var(--green-soft);
+  border-color: #bdd6e8;
+  background: var(--blue-soft);
 }
 
 .note-card__title {
@@ -141,7 +141,7 @@ textarea {
   min-width: 0;
   padding: 32px 48px 28px;
   background:
-    linear-gradient(115deg, rgba(255, 255, 255, 0.7), rgba(255, 242, 238, 0.72)),
+    linear-gradient(115deg, rgba(255, 255, 255, 0.7), rgba(220, 235, 248, 0.72)),
     var(--page);
 }
 
