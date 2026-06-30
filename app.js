@@ -1,4 +1,5 @@
 const STORAGE_KEY = "clear-notes-app-v1";
+const THEME_STORAGE_KEY = "clear-notes-theme";
 
 const defaultNotes = [
   {
@@ -25,6 +26,7 @@ const els = {
   noteMeta: document.getElementById("noteMeta"),
   saveState: document.getElementById("saveState"),
   noteItemTemplate: document.getElementById("noteItemTemplate"),
+  themeToggle: document.getElementById("themeToggle"),
 };
 
 const isAppShellPresent =
@@ -36,7 +38,8 @@ const isAppShellPresent =
   !!els.contentInput &&
   !!els.noteMeta &&
   !!els.saveState &&
-  !!els.noteItemTemplate;
+  !!els.noteItemTemplate &&
+  !!els.themeToggle;
 
 const state = {
   notes: loadNotes(),
@@ -204,6 +207,34 @@ function bindEvents() {
   els.contentInput.addEventListener("input", (event) => {
     updateActiveNote({ content: event.target.value });
   });
+  els.themeToggle.addEventListener("click", toggleTheme);
+}
+
+function getSavedTheme() {
+  try {
+    return localStorage.getItem(THEME_STORAGE_KEY) || "light";
+  } catch {
+    return "light";
+  }
+}
+
+function applyTheme(theme) {
+  const isDark = theme === "dark";
+  document.documentElement.setAttribute("data-theme", theme);
+  els.themeToggle.querySelector(".theme-toggle__icon").textContent = isDark ? "☀️" : "🌙";
+  els.themeToggle.querySelector(".theme-toggle__label").textContent = isDark ? "浅色模式" : "深色模式";
+  els.themeToggle.title = isDark ? "切换到浅色模式" : "切换到深色模式";
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute("data-theme") || "light";
+  const next = current === "dark" ? "light" : "dark";
+  applyTheme(next);
+  try {
+    localStorage.setItem(THEME_STORAGE_KEY, next);
+  } catch {
+    /* storage unavailable */
+  }
 }
 
 function init() {
@@ -212,6 +243,7 @@ function init() {
     state.notes = [...defaultNotes];
   }
   saveNotes(state.notes);
+  applyTheme(getSavedTheme());
   bindEvents();
   renderNotes();
   syncEditor(getActiveNote());
